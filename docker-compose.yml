@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+
+  # MongoDB
+  mongo:
+    image: mongo:6.0.1
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: admin
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+    stdin_open: true 
+    tty: true
+    
+volumes:
+  mongodb_data_container:
+
+    
