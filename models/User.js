@@ -7,6 +7,9 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    friendId: {
+        type: mongoose.SchemaTypes.ObjectId,
+    },
     createdAt: {
         type: Date,
         default: () => Date.now(),
