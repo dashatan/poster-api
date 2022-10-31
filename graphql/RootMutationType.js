@@ -1,6 +1,7 @@
 const { GraphQLObjectType } = require("graphql");
-const { addUser } = require("./models/users/fields/addUser");
-const { updateUser } = require("./models/users/fields/updateUser");
+const { addUser } = require("./models/User/fields/addUser");
+const { updateUser } = require("./models/User/fields/updateUser");
+const { addPost } = require("./models/Post/fields/addPost");
 
 const RootMutationType = new GraphQLObjectType({
     name: "Mutation",
@@ -8,6 +9,7 @@ const RootMutationType = new GraphQLObjectType({
     fields: () => ({
         addUser,
         updateUser,
+        addPost,
     }),
 });
 

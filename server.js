@@ -3,7 +3,7 @@ require("dotenv").config({ path: "./config.env" });
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const usersRouter = require("./routes/users");
+const cors = require("cors");
 const graphql = require("./graphql");
 
 const app = express();
@@ -15,9 +15,9 @@ app.listen(port, () => console.log(`server is listening to port ${port}`));
 
 mongoose.connect(mongoURI)
     .then(() => console.log("connected to mongodb"))
-    .catch((err) => console.log({ message: "somthing went wrong", error: err }));
+    .catch((err) => console.log({ message: "something went wrong", error: err }));
 
 app.use(bodyParser.json());
+app.use(cors());
 
-app.use("/users", usersRouter);
-app.use("/graphql", graphql);
+app.use("/", graphql);
