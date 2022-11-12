@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cors = require("cors");
 const graphql = require("./graphql");
+const fileUploadRouter = require("./routes/fileUpload");
 
 const app = express();
 
@@ -20,4 +21,6 @@ mongoose.connect(mongoURI)
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use("/", graphql);
+app.use(express.static("public"));
+app.use("/gql", graphql);
+app.use("/upload",fileUploadRouter);
