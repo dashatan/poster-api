@@ -1,12 +1,14 @@
-const { unlink } = require("fs")
+const { unlink, existsSync } = require("fs")
 
-const removeFile = async (req, res) => {
+const removeFile = (path) => async (req, res) => {
   try {
-    const path = req.body.filePath
-    if (path) unlink("public/" + path)
-    res.json("file has been removed")
+    const name = req.params.name
+    const filePath = path + name
+    const isExist = existsSync(filePath)
+    if (isExist) unlink(path + name, () => {})
+    res.json({ success: true, message: "file has been removed" })
   } catch (error) {
-    res.status(500).json(error.message)
+    res.status(500).json({ success: false, message: error.message })
   }
 }
 

@@ -5,7 +5,7 @@ const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const redis = require("redis")
 const cors = require("cors")
-const graphql = require("./GraphQL")
+const graphql = require("./graphql")
 const fileRouter = require("./REST/routes/file")
 
 const app = express()

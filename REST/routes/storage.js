@@ -15,4 +15,4 @@ function storage(dest) {
   })
 }
 
-module.exports = { storage }
+module.exports = storage
