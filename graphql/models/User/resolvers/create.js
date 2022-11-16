@@ -1,14 +1,12 @@
-const User = require("../User");
+const User = require("..")
 
 module.exports.AddUser = async (_parent, args) => {
-    const {
-        name, age, email, friendId,
-    } = args;
-    const user = await User.create({
-        name,
-        age,
-        email,
-        friendId,
-    });
-    return user;
-};
+  const { name, age, email, friendId } = args
+  const user = await User.create({
+    name,
+    age,
+    email,
+    friendId,
+  })
+  return user
+}

@@ -1,3 +1,3 @@
-const { categories } = require("../../../seed/data/categories");
+const { categories } = require("../../../StaticData/categories")
 
-module.exports.getAllCategories = () => categories;
+module.exports.getAllCategories = () => categories

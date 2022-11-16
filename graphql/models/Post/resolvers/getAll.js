@@ -1,6 +1,6 @@
-const Post = require("..");
+const Post = require("..")
 
 module.exports.GetAllPosts = async () => {
-    const posts = await Post.find();
-    return posts;
-};
+  const posts = await Post.find()
+  return posts
+}

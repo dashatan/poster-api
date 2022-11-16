@@ -1,6 +1,6 @@
-const { categories } = require("../../../seed/data/categories");
+const { categories } = require("../../../StaticData/categories")
 
 module.exports.getOneCategory = (_parent, args) => {
-    const category = categories.find((x) => x.title === args.title);
-    return category;
-};
+  const category = categories.find((x) => x.title === args.title)
+  return category
+}

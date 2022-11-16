@@ -1,12 +1,12 @@
-const { GraphQLString } = require("graphql");
-const { GetOneUser } = require("../resolvers/get_one");
-const { UserType } = require("../UserType");
+const { GraphQLString } = require("graphql")
+const { GetOneUser } = require("../resolvers/get_one")
+const { UserType } = require("../UserType")
 
 module.exports.user = {
-    type: UserType,
-    description: "Get One User",
-    args: {
-        _id: { type: GraphQLString },
-    },
-    resolve: GetOneUser,
-};
+  type: UserType,
+  description: "Get One User",
+  args: {
+    _id: { type: GraphQLString },
+  },
+  resolve: GetOneUser,
+}
