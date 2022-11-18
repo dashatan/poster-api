@@ -144,8 +144,9 @@ module.exports.attributes = {
   },
   productionYear: {
     label: "production year",
-    formFieldType: "date",
+    formFieldType: "select",
     filterFieldType: "range",
+    options: years,
   },
   bodyColor: {
     label: "body color",
@@ -166,7 +167,7 @@ module.exports.attributes = {
   bodyStatus: {
     label: "body status",
     formFieldType: "select",
-    option: [
+    options: [
       "intact",
       "some-scratches",
       "paint-less-dent-removal",
@@ -180,12 +181,12 @@ module.exports.attributes = {
   engineStatus: {
     label: "engine status",
     formFieldType: "select",
-    option: ["healthy", "needs-repair", "replaced"],
+    options: ["healthy", "needs-repair", "replaced"],
   },
   chassisStatus: {
     label: "chassis status",
     formFieldType: "select",
-    option: [
+    options: [
       "both-healthy",
       "back-damage",
       "back-paint",
@@ -200,12 +201,12 @@ module.exports.attributes = {
   gearbox: {
     label: "gearbox",
     formFieldType: "select",
-    option: ["manual", "automatic"],
+    options: ["manual", "automatic"],
   },
   thirdPartyInsuranceDeadline: {
     label: "third party insurance deadline",
     formFieldType: "select",
-    option: [
+    options: [
       "1-month",
       "2-month",
       "3-month",

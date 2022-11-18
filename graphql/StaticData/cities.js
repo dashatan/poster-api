@@ -1,5 +1,22 @@
 module.exports.cities = [
   {
+    slug: "markazi",
+    province_id: 1,
+  },
+  {
+    slug: "gilan",
+    province_id: 2,
+  },
+  {
+    slug: "mazandaran",
+    province_id: 3,
+  },
+  {
+    slug: "este-azerbaijan",
+    province_id: 4,
+  },
+
+  {
     id: 102,
     title: "آبادان",
     slug: "Abadan",

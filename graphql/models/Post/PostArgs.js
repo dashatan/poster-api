@@ -1,10 +1,9 @@
-const { GraphQLString, GraphQLInt, GraphQLList } = require("graphql")
+const { GraphQLString, GraphQLList } = require("graphql")
 const { keyValueInputObjectType } = require("../../types/keyValueObjectType")
 
 module.exports.postArgs = {
-  _id: { type: GraphQLString },
   title: { type: GraphQLString },
-  description: { type: GraphQLInt },
+  description: { type: GraphQLString },
   categoryId: { type: GraphQLString },
   cityId: { type: GraphQLString },
   userId: { type: GraphQLString },
