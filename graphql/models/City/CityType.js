@@ -1,4 +1,5 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt } = require("graphql")
+const { GraphQLObjectType, GraphQLString } = require("graphql")
+const { cities } = require("../../StaticData/cities")
 
 const beautifyWord = (string) => {
   return string
@@ -17,7 +18,7 @@ module.exports.CityType = new GraphQLObjectType({
       title: {
         type: GraphQLString,
         resolve: (city) => {
-          return beautifyWord(city.slug)
+          return beautifyWord(city.slug.toLowerCase())
         },
       },
       slug: {
@@ -28,13 +29,21 @@ module.exports.CityType = new GraphQLObjectType({
       },
       parentSlug: {
         type: GraphQLString,
-        resolve: () => "este-azerbaijan",
+        resolve: (city) => {
+          if (city.province_id) {
+            return cities
+              .find((x) => x.id === city.province_id)
+              .slug.toLowerCase()
+              .replace(/ /g, "-")
+          } else {
+            return ""
+          }
+        },
       },
       icon: {
         type: GraphQLString,
         resolve: () => "",
       },
-      province_id: { type: GraphQLInt },
       latitude: { type: GraphQLString },
       longitude: { type: GraphQLString },
     }

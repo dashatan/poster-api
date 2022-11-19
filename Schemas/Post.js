@@ -1,16 +1,16 @@
 const mongoose = require("mongoose")
 
 const postSchema = new mongoose.Schema({
+  categoryId: {
+    type: String,
+    required: true,
+  },
   title: {
     type: String,
     required: true,
   },
   description: String,
   images: [String],
-  categoryId: {
-    type: String,
-    required: true,
-  },
   cityId: {
     type: String,
     required: true,

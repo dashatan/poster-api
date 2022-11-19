@@ -2,9 +2,9 @@ const express = require("express")
 
 const multer = require("multer")
 const storage = require("./storage")
-const fileUpload = require("../controllers/fileUpload")
-const removeFile = require("../controllers/removeFile")
-const tmpFileUpload = require("../controllers/tmpFileUpload")
+const fileUpload = require("../controllers/file/fileUpload")
+const removeFile = require("../controllers/file/removeFile")
+const tmpFileUpload = require("../controllers/file/tmpFileUpload")
 
 const fileRouter = express.Router()
 

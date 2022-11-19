@@ -13,7 +13,7 @@ const tmpFileUpload = async (req, res) => {
         })
       }, expire)
     }
-    const path = "tmp/" + file.filename
+    const path = process.env.BASE_URL + "/tmp/" + file.filename
     res.json(path)
   } catch (error) {
     res.status(500).json(error.message)

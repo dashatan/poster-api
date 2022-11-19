@@ -7,6 +7,7 @@ const redis = require("redis")
 const cors = require("cors")
 const graphql = require("./graphql")
 const fileRouter = require("./REST/routes/file")
+const postRouter = require("./REST/routes/post")
 
 const app = express()
 
@@ -34,5 +35,6 @@ app.use(cors())
 app.use(express.static("public"))
 app.use("/gql", graphql)
 app.use("/file", fileRouter)
+app.use("/post", postRouter)
 
 module.exports = { redisClient }
