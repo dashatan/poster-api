@@ -1,6 +1,5 @@
 const { rename } = require("fs")
 const Post = require("../../../Schemas/Post")
-const User = require("../../../Schemas/User")
 
 const moveImages = (images) => {
   return new Promise((resolve, reject) => {
@@ -19,8 +18,6 @@ const moveImages = (images) => {
 }
 
 module.exports.createPost = async (req, res) => {
-  const user = await User.findById(req.body.userId)
-  if (!user) return res.status(404).json("user not found")
   const post = new Post({ ...req.body })
   post
     .validate()

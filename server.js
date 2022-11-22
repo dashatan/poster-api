@@ -8,22 +8,22 @@ const cors = require("cors")
 const graphql = require("./graphql")
 const fileRouter = require("./REST/routes/file")
 const postRouter = require("./REST/routes/post")
+const { auth } = require("./REST/middlewares/auth")
 
 const app = express()
 
-const port = process.env.EXPRESS_PORT || 5000
-const mongoURI = process.env.MONGODB_URI
-const redisHost = process.env.REDIS_HOST || "redis"
-const redisPort = process.env.REDIS_PORT || 6379
+const expressPort = process.env.EXPRESS_PORT || 5000
+const mongoURL = process.env.MONGODB_URL
+const redisUrl = process.env.REDIS_URL
 
-app.listen(port, () => console.log(`server is listening to port ${port}`))
+app.listen(expressPort, () => console.log(`server is listening to port ${expressPort}`))
 
 mongoose
-  .connect(mongoURI)
+  .connect(mongoURL)
   .then(() => console.log("connected to mongodb"))
   .catch((err) => console.log({ message: "something went wrong", error: err }))
 
-const redisClient = redis.createClient({ url: `redis://${redisHost}:${redisPort}` })
+const redisClient = redis.createClient({ url: redisUrl })
 redisClient
   .connect()
   .then(() => console.log("redis connected"))
@@ -31,10 +31,10 @@ redisClient
 
 app.use(bodyParser.json())
 app.use(cors())
-
 app.use(express.static("public"))
+
 app.use("/gql", graphql)
-app.use("/file", fileRouter)
-app.use("/post", postRouter)
+app.use("/file", auth, fileRouter)
+app.use("/post", auth, postRouter)
 
 module.exports = { redisClient }
