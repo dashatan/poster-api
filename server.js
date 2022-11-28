@@ -9,6 +9,7 @@ const graphql = require("./graphql")
 const fileRouter = require("./REST/routes/file")
 const postRouter = require("./REST/routes/post")
 const { auth } = require("./REST/middlewares/auth")
+const authRouter = require("./REST/routes/auth")
 
 const app = express()
 
@@ -36,5 +37,6 @@ app.use(express.static("public"))
 app.use("/gql", graphql)
 app.use("/file", auth, fileRouter)
 app.use("/post", auth, postRouter)
+app.use("/auth", authRouter)
 
 module.exports = { redisClient }

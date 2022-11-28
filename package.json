@@ -6,6 +6,7 @@
     "start": "nodemon server.js"
   },
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "body-parser": "^1.20.0",
     "cors": "^2.8.5",
     "currency.js": "^2.0.4",
@@ -17,7 +18,8 @@
     "graphql": "^15.8.0",
     "mongoose": "^6.6.1",
     "multer": "^1.4.5-lts.1",
-    "redis": "^4.5.0"
+    "redis": "^4.5.0",
+    "zod": "^3.19.1"
   },
   "devDependencies": {
     "eslint": "^8.27.0",
