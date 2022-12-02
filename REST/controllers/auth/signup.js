@@ -11,8 +11,8 @@ module.exports.signup = async (req, res) => {
     const hash = await bcrypt.hash(password, salt)
     user = await User.create({ name, email, password: hash })
     const userToken = user._id
-    res.json(userToken)
+    return res.json(userToken)
   } catch (error) {
-    res.status(400).json(error)
+    return res.status(400).json(error)
   }
 }
