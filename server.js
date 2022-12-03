@@ -1,7 +1,6 @@
 require("dotenv").config({ path: "./config.env" })
 
 const express = require("express")
-const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
 const redis = require("redis")
 const cors = require("cors")
@@ -10,6 +9,7 @@ const fileRouter = require("./REST/routes/file")
 const postRouter = require("./REST/routes/post")
 const { auth } = require("./REST/middlewares/auth")
 const authRouter = require("./REST/routes/auth")
+const userRouter = require("./REST/routes/user")
 
 const app = express()
 
@@ -30,13 +30,14 @@ redisClient
   .then(() => console.log("redis connected"))
   .catch((err) => console.log(err))
 
-app.use(bodyParser.json())
+app.use(express.json())
 app.use(cors())
 app.use(express.static("public"))
 
 app.use("/gql", graphql)
+app.use("/auth", authRouter)
 app.use("/file", auth, fileRouter)
 app.use("/post", auth, postRouter)
-app.use("/auth", authRouter)
+app.use("/user", auth, userRouter)
 
 module.exports = { redisClient }
