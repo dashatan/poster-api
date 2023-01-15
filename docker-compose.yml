@@ -10,7 +10,7 @@ services:
   service:
     container_name: poster-api
     build: ./
-    command: /services/poster-api/entrypoint.sh
+    command: npm start
     ports:
       - "5000:5000"
     volumes:

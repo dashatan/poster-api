@@ -1,7 +1,7 @@
 const { GraphQLObjectType } = require("graphql")
-const { addUser } = require("./Models/User/fields/addUser")
-const { updateUser } = require("./Models/User/fields/updateUser")
-const { newPost } = require("./Models/Post/fields/newPost")
+const { addUser } = require("./models/User/fields/addUser")
+const { updateUser } = require("./models/User/fields/updateUser")
+const { newPost } = require("./models/Post/fields/newPost")
 
 const RootMutationType = new GraphQLObjectType({
   name: "Mutation",

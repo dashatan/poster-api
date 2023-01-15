@@ -3,7 +3,7 @@ const dayjs = require("dayjs")
 const relativeTime = require("dayjs/plugin/relativeTime")
 const currency = require("currency.js")
 const { categories } = require("../../StaticData/categories")
-const { keyValueObjectType } = require("../../Types/keyValueObjectType")
+const { keyValueObjectType } = require("../../types/keyValueObjectType")
 const { CategoryType } = require("../Category/CategoryType")
 const { cities } = require("../../StaticData/cities")
 
