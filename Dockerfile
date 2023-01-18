@@ -2,8 +2,8 @@ FROM node:18.12.0
 
 WORKDIR /services/poster-api
 
-# Comment below lines out on local build
+# COPY package.json /services/poster-api
+# RUN npm install
+# COPY ./ /services/poster-api
 
-COPY ./ /services/poster-api/
 
-ENTRYPOINT [ "/services/poster-api/entrypoint.sh" ]
