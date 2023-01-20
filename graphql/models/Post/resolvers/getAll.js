@@ -5,8 +5,8 @@ module.exports.GetAllPosts = async (_parent, args) => {
   const sortArr = sort ? sort.toString().split(":") : ""
   const f = {}
   if (filters) {
-    filters.map((filter) => {
-      f[filter.key] = filter.value
+    filters.map(({ key, value }) => {
+      if (value) f[key] = value
     })
   }
 
