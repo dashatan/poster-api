@@ -19,7 +19,11 @@ module.exports.PostType = new GraphQLObjectType({
       cityId: { type: GraphQLString },
       userId: { type: GraphQLString },
       images: { type: new GraphQLList(GraphQLString) },
-      thumbnail: { type: GraphQLString },
+      // thumbnail: { type: GraphQLString },
+      thumbnail: {
+        type: GraphQLString,
+        resolve: (post) => post.images[0],
+      },
       category: {
         type: CategoryType,
         resolve: (post) => {

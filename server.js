@@ -1,8 +1,8 @@
 require("dotenv").config({ path: "./.env" })
 
 const express = require("express")
-const https = require("https");
-const fs = require("fs");
+const https = require("https")
+const fs = require("fs")
 const mongoose = require("mongoose")
 const redis = require("redis")
 const cors = require("cors")
@@ -45,13 +45,12 @@ app.use("/user", auth, userRouter)
 const options = {
   key: fs.readFileSync("server.key"),
   cert: fs.readFileSync("server.cert"),
-};
-  
+}
+
 // Creating https server by passing
 // options and app object
-https.createServer(options, app)
-.listen(expressPort, function (req, res) {
-  console.log("Server started at port "+expressPort);
-});
+https.createServer(options, app).listen(expressPort, function () {
+  console.log("Server started at port " + expressPort)
+})
 
 module.exports = { redisClient }
