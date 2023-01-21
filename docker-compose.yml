@@ -12,6 +12,8 @@ services:
     build: ./
     command: npm start
     ports:
+      - "80:80"
+      - "443:443"
       - "5000:5000"
     volumes:
       - ./:/services/poster-api

@@ -2,6 +2,7 @@ require("dotenv").config({ path: "./.env" })
 
 const express = require("express")
 const https = require("https")
+const http = require("http")
 const fs = require("fs")
 const mongoose = require("mongoose")
 const redis = require("redis")
@@ -15,12 +16,11 @@ const userRouter = require("./REST/routes/user")
 
 const app = express()
 
-// const expressPort = process.env.EXPRESS_PORT || 5000
-const httpsPort = process.env.HTTPS_PORT || 5000
+const httpPort = process.env.EXPRESS_PORT || 80
+const httpsPort = process.env.HTTPS_PORT || 443
 const mongoURL = process.env.MONGODB_URL
 const redisUrl = process.env.REDIS_URL
 
-// app.listen(expressPort, () => console.log(`server is listening to port ${expressPort}`))
 
 mongoose
   .connect(mongoURL)
@@ -48,10 +48,12 @@ const options = {
   cert: fs.readFileSync("server.cert"),
 }
 
-// Creating https server by passing
-// options and app object
-https.createServer(options, app).listen(httpsPort, function () {
+http.createServer(app).listen(httpPort,function () {
+  console.log("Server started at port " + httpPort)
+})
+https.createServer(options, app).listen(httpsPort,function () {
   console.log("Server started at port " + httpsPort)
 })
+
 
 module.exports = { redisClient }
