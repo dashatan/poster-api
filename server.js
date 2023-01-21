@@ -16,11 +16,10 @@ const userRouter = require("./REST/routes/user")
 
 const app = express()
 
-const httpPort = process.env.EXPRESS_PORT || 80
+const httpPort = process.env.HTTP_PORT || 80
 const httpsPort = process.env.HTTPS_PORT || 443
 const mongoURL = process.env.MONGODB_URL
 const redisUrl = process.env.REDIS_URL
-
 
 mongoose
   .connect(mongoURL)
@@ -48,12 +47,11 @@ const options = {
   cert: fs.readFileSync("server.cert"),
 }
 
-http.createServer(app).listen(httpPort,function () {
+http.createServer(app).listen(httpPort, function () {
   console.log("Server started at port " + httpPort)
 })
-https.createServer(options, app).listen(httpsPort,function () {
+https.createServer(options, app).listen(httpsPort, function () {
   console.log("Server started at port " + httpsPort)
 })
-
 
 module.exports = { redisClient }
