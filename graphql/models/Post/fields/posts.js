@@ -10,6 +10,7 @@ module.exports.posts = {
     skip: { type: GraphQLInt },
     page: { type: GraphQLInt },
     sort: { type: GraphQLString },
+    search: { type: GraphQLString },
     filters: { type: new GraphQLList(keyValueInputObjectType) },
   },
   resolve: GetAllPosts,

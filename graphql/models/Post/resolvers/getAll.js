@@ -1,7 +1,7 @@
 const Post = require("..")
 
 module.exports.GetAllPosts = async (_parent, args) => {
-  const { limit, sort, skip, page, filters } = args
+  const { limit, sort, skip, page, filters, search } = args
   const sortArr = sort ? sort.toString().split(":") : ""
   const f = {}
   if (filters) {
@@ -9,8 +9,10 @@ module.exports.GetAllPosts = async (_parent, args) => {
       if (value) f[key] = value
     })
   }
-
-  let posts = await Post.find(f, null, {
+  if (search) {
+    f.title = { $regex: search, $options: "i" }
+  }
+  let posts = await Post.find({ ...f }, null, {
     limit,
     skip: page ? (page - 1) * limit : skip,
     sort: { [sortArr[0]]: sortArr[1] },
