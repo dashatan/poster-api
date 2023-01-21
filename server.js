@@ -16,7 +16,7 @@ const userRouter = require("./REST/routes/user")
 const app = express()
 
 // const expressPort = process.env.EXPRESS_PORT || 5000
-const httpsPort = process.env.HTTPS_PORT || 5001
+const httpsPort = process.env.HTTPS_PORT || 5000
 const mongoURL = process.env.MONGODB_URL
 const redisUrl = process.env.REDIS_URL
 
