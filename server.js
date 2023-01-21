@@ -15,7 +15,8 @@ const userRouter = require("./REST/routes/user")
 
 const app = express()
 
-const expressPort = process.env.EXPRESS_PORT || 5000
+// const expressPort = process.env.EXPRESS_PORT || 5000
+const httpsPort = process.env.HTTPS_PORT || 5001
 const mongoURL = process.env.MONGODB_URL
 const redisUrl = process.env.REDIS_URL
 
@@ -49,8 +50,8 @@ const options = {
 
 // Creating https server by passing
 // options and app object
-https.createServer(options, app).listen(expressPort, function () {
-  console.log("Server started at port " + expressPort)
+https.createServer(options, app).listen(httpsPort, function () {
+  console.log("Server started at port " + httpsPort)
 })
 
 module.exports = { redisClient }
